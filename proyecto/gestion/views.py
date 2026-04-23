@@ -91,3 +91,6 @@ def eliminar_libro(request, pk):
         return redirect('lista_libros')
 
     return render(request, 'gestion/libro_confirm_delete.html', {'libro': libro})
+from django.shortcuts import render
+
+# Create your views here.

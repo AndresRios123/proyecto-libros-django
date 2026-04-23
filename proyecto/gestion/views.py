@@ -6,7 +6,7 @@ from .forms import AutorForm, LibroForm
 # CRUD Autores
 def lista_autores(request):
     autores = Autor.objects.all()
-    return render(request,'gestion/lista_autores.html',{'autores':autores})
+    return render(request,'gestion/lista-autores.html',{'autores':autores})
 def crear_autor(request):
     if request.method=='POST':
         form = AutorForm(request.POST)

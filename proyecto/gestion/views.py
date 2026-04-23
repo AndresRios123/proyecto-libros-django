@@ -3,6 +3,10 @@ from .models import Autor, Libro
 from .forms import AutorForm, LibroForm
 
 
+# =========================
+# CRUD AUTORES
+# =========================
+
 def lista_autores(request):
     autores = Autor.objects.all()
     return render(request, 'gestion/lista-autores.html', {'autores': autores})
@@ -14,8 +18,6 @@ def crear_autor(request):
         if form.is_valid():
             form.save()
             return redirect('lista_autores')
-        else:
-            print(form.errors)  # 👈 para ver errores en consola
     else:
         form = AutorForm()
 
@@ -30,8 +32,6 @@ def editar_autor(request, pk):
         if form.is_valid():
             form.save()
             return redirect('lista_autores')
-        else:
-            print(form.errors)
     else:
         form = AutorForm(instance=autor)
 
@@ -44,7 +44,13 @@ def eliminar_autor(request, pk):
     if request.method == 'POST':
         autor.delete()
         return redirect('lista_autores')
-    return render(request,'gestion/autor_confirm_delete.html',{'autor':autor})
+
+    return render(request, 'gestion/autor_confirm_delete.html', {'autor': autor})
+
+
+# =========================
+# CRUD LIBROS
+# =========================
 
 def lista_libros(request):
     libros = Libro.objects.select_related('autor').all()
@@ -85,5 +91,3 @@ def eliminar_libro(request, pk):
         return redirect('lista_libros')
 
     return render(request, 'gestion/libro_confirm_delete.html', {'libro': libro})
-
-    return render(request, 'gestion/autor_confirm_delete.html', {'autor': autor})

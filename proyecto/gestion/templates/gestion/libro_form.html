@@ -1,0 +1,60 @@
+{% extends 'gestion/base.html' %}
+
+{% block title %}Formulario Libro{% endblock %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+    <div class="col-md-7">
+
+```
+    <div class="card p-4">
+
+        <h3 class="mb-3">📖 Formulario de Libro</h3>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label class="form-label">Título</label>
+                {{ form.titulo }}
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Fecha de publicación</label>
+                {{ form.fecha_publicacion }}
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Género</label>
+                {{ form.genero }}
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">ISBN</label>
+                {{ form.isbn }}
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Autor</label>
+                {{ form.autor }}
+            </div>
+
+            <button type="submit" class="btn btn-success">
+                Guardar
+            </button>
+
+            <a href="{% url 'lista_libros' %}" class="btn btn-secondary">
+                Cancelar
+            </a>
+
+        </form>
+
+    </div>
+
+</div>
+```
+
+</div>
+
+{% endblock %}
